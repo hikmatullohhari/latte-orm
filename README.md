@@ -286,19 +286,19 @@ We have these bunch of methods to process the data :
 * **exportToCSV()**
   * void exportToSER(String fileLocation);
   
-  Export saved Java Object into CSV file
+  Export Java Object into CSV file
   ```java
   String fileLocation = "/Users/latte/Documents/newStock.csv";
-  stockModel.exportToCSV(fileLocation);
+  stockModel.exportToCSV(fileLocation); //it will create the file if doesn't exist and rewrite the file if exist
   
   ```
 * **exportToSER()**
   * void exportToSER(String fileLocation);
  
-  Export saved Java Object into Java Serialization file
+  Export Java Object into Java Serialization file
   ```java
   String fileLocation = "/Users/latte/Documents/newStock.ser";
-  stockModel.exportToCSV(fileLocation);
+  stockModel.exportToCSV(fileLocation); //it will create the file if doesn't exist and rewrite the file if exist
   
   ```
   
