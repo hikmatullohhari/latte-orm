@@ -1,0 +1,61 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.latte</groupId>
+  <artifactId>latte-orm</artifactId>
+  <version>1.0.0</version>
+  <packaging>jar</packaging>
+
+  <name>Latte</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <jdk.version>1.5</jdk.version>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+  
+  <build>
+    <plugins>
+      <plugin>
+		<groupId>org.apache.maven.plugins</groupId>
+		<artifactId>maven-eclipse-plugin</artifactId>
+		<version>2.9</version>
+		<configuration>
+		  <downloadSources>true</downloadSources>
+		  <downloadJavadocs>false</downloadJavadocs>
+		</configuration>
+	  </plugin>
+	  <plugin>
+	    <groupId>org.apache.maven.plugins</groupId>
+	    <artifactId>maven-jar-plugin</artifactId>
+	    <version>2.4</version>
+	    <executions>
+	        <execution>
+	            <id>default-jar</id>
+	            <phase>package</phase>
+	            <goals>
+	                <goal>jar</goal>
+	            </goals>
+	            <configuration>
+	                <excludes>
+	                	<exclude>**/App.java</exclude>
+	                    <exclude>**/model/**</exclude>
+	                    <exclude>**/files/**</exclude>
+	                </excludes>
+	            </configuration>
+	        </execution>
+	    </executions>
+	  </plugin>
+    </plugins>
+  </build>
+</project>
