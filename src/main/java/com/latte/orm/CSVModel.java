@@ -69,7 +69,21 @@ public class CSVModel<T> extends GenericModel<T>{
 					}
 				}
 				
-				if (entityClass.getAnnotation(OnMapping.class) == null || entityClass.getAnnotation(OnMapping.class).check()){
+				OnMapping onMapping = null;
+				if(entityClass.getAnnotation(OnMapping.class) == null){ //if not declared, set check() true
+					onMapping = new OnMapping() {
+						public Class<? extends Annotation> annotationType() {
+							return OnMapping.class;
+						}
+						public boolean check() {
+							return true;
+						}
+					};
+				} else {
+					onMapping = entityClass.getAnnotation(OnMapping.class);
+				}
+				
+				if(onMapping.check()){
 					if(CheckAnnotationConstraints(newEntityClassInstance)){
 						records.add(newEntityClassInstance);
 					} else {
@@ -79,6 +93,7 @@ public class CSVModel<T> extends GenericModel<T>{
 				} else {
 					records.add(newEntityClassInstance);
 				}
+				
 				rowNumber++;
 			}
 			bf.close();
