@@ -137,7 +137,7 @@ Model<Stock> stockModel = new GenericModel<Stock>(Stock.class, listStock);
 > ### Data selection and Modification
 
 We have these bunch of methods to process the data : 
-*insert(), update(), delete(), where(), andWhere(), orWhere(), limit(), toSingle(), toList(), save(), exportToCSV(), exportToSER().*
+*where(), andWhere(), orWhere(), insert(), update(), delete(), limit(), toSingle(), toList(), save(), exportToCSV(), exportToSER().*
 
 * **where()**
 	* where(columName, operator, value)
@@ -217,21 +217,21 @@ We have these bunch of methods to process the data :
 
   update(T tOld, tNew);
   ```java
-  Stock stockOld = stockModel.where("id", Operator.EQUAL, "1").toSingle();
-  Stock stockNew = stockModel.where("id", Operator.EQUAL, "1").toSingle();
+  Stock stockOld = stockModel.where("id", Operator.EQUALS, "1").toSingle();
+  Stock stockNew = stockModel.where("id", Operator.EQUALS, "1").toSingle();
   stockNew.setStockName("Sony Xperia Z5 Prime");
   stockModel.update(stockOld, stockNew);
   ```
 * **delete()**
 	* delete(T t)
 	```java
-    Stock stock1 = stockModel.where("id", Operator.EQUAL, "1").toSingle();
+    Stock stock1 = stockModel.where("id", Operator.EQUALS, "1").toSingle();
     stockModel.delete(stock1);
     ```
     * delete()
     ```java
     // Delete all data where price equal to 200;
-    stockModel.where("price", Operator.EQUAL, 200).delete();
+    stockModel.where("price", Operator.EQUALS, 200).delete();
     ```
 * **limit()**
 	* limit(int max)
@@ -261,7 +261,7 @@ We have these bunch of methods to process the data :
   
   Retrieve single element of records. If the query process result more than one data, it will get the first element;
   ```java
-  Stock stock1 = stockModel.where("id", Operator.EQUAL, "1").toSingle();
+  Stock stock1 = stockModel.where("id", Operator.EQUALS, "1").toSingle();
   ```
 * **save()**
   * void save();
@@ -273,13 +273,13 @@ We have these bunch of methods to process the data :
   stockModel.insert(stock1).save();
   
   //#2
-  Stock stockOld = stockModel.where("id", Operator.EQUAL, "1").toSingle();
-  Stock stockNew = stockModel.where("id", Operator.EQUAL, "1").toSingle();
+  Stock stockOld = stockModel.where("id", Operator.EQUALS, "1").toSingle();
+  Stock stockNew = stockModel.where("id", Operator.EQUALS, "1").toSingle();
   stockNew.setStockName("Sony Xperia Z5 Prime");
   stockModel.update(stockOld, stockNew).save();
   
   //#3
-  Stock stock1 = stockModel.where("id", Operator.EQUAL, "1").toSingle();
+  Stock stock1 = stockModel.where("id", Operator.EQUALS, "1").toSingle();
   stockModel.delete(stock1);
   
   ```
